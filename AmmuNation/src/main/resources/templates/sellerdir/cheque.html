@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/headersell :: headerMain"></div>
+
+<form th:object="${cheque}" method="post">
+    <h3 th:text="'ИНН:'"></h3>
+
+    <input type="text" th:field="*{tin}" name="tin" placeholder="ИНН">
+    <div th:if="${#fields.hasErrors('tin')}" th:errors="*{tin}" style="color: red"></div><br>
+    <h3 th:text="'Дата выдачи:'"></h3>
+
+    <input type="date" th:field="*{dateissue}" name="dateissue" placeholder="Дата выдачи">
+    <div th:if="${#fields.hasErrors('dateissue')}" th:errors="*{dateissue}" style="color: red"></div><br>
+    <h3 th:text="'Товар:'"></h3>
+
+    <select  name="weapons">
+        <div th:each="role : ${weaponList}">
+            <option th:value="${role.id}" th:text="${role.name}"></option>
+        </div>
+        <h3 th:text="'Сотрудник:'"></h3>
+
+    </select><br>
+    <select  name="employee">
+        <div th:each="role : ${employeeList}">
+            <option th:value="${role.id}" th:text="${role.name} + ' ' + ${role.surname}"></option>
+        </div>
+    </select><br>
+
+    <input type="submit"  value="Добавить чек" class="btn btn-success"><br>
+
+
+</form>
+<a th:href="'/sellerdir/'" class="btn btn-dark">Выйти</a>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/header :: headerMain"></div>
+
+<div>
+
+    <div th:each="el : ${employee}">
+        <h3 th:text="'Имя: ' + ${el.name}"></h3>
+
+        <p th:text="'Фамилия: '+ ${el.surname}"></p>
+        <p th:text="'Отчество: ' + ${el.patronymic}"></p>
+        <p th:text="'Логин: ' + ${el.username}"></p>
+<!--        <p th:text="${el.password}+'$'"></p>-->
+        <a th:href="'/admindir/edit/'+${el.id}" class="btn btn-warning">Редактирование</a>
+        <a th:href="'/admindir/del/'+${el.id}" class="btn btn-danger">Удаление</a>
+    </div><br>
+    <a th:href="'/admindir/'" class="btn btn-secondary">Назад</a>
+
+</div>
+
+</body>
+</html>

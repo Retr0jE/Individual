@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="fragments/headerstore :: headerMain"></div>
+
+
+<div th:each="el : ${quantity}">
+    <h2 th:text="'Количество: '+${el.quantity}"></h2>
+    <div th:each="elem : ${el.weapons}">
+        <h2 th:text="'Товар: '+${elem.name}"></h2>
+    </div>
+    <h2 th:text="'Адрес склада: '+${el.warehouse.address}"></h2>
+    --------------------------------------------------------------
+</div>
+</body>
+</html>

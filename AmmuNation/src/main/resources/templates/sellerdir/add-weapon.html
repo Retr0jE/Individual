@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/headersell :: headerMain"></div>
+
+<form th:object="${weapons}" method="post">
+    <h3 th:text="'Наименование:'"></h3>
+    <input type="text" th:field="*{name}" name="name" placeholder="Наименование">
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></div><br>
+    <h3 th:text="'Цена:'"></h3>
+    <input type="text" th:field="*{price}" name="price" placeholder="Цена">
+    <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" style="color: red"></div><br>
+    <h3 th:text="'Модель:'"></h3>
+    <select  name="weaponModel">
+        <div th:each="element : ${modelList}">
+            <option th:value = "${element.id}" th:text="${element.nameModel}"></option>
+        </div>
+    </select><br>
+
+    <input type="submit"  value="Добавить оружие" class="btn btn-success"><br>
+
+
+</form>
+<a th:href="'/sellerdir/'" class="btn btn-dark">Выйти</a>
+
+</body>
+</html>

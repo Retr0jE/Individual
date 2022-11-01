@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/headerstore :: headerMain"></div>
+
+<form th:object="${quantity}" method="post">
+    <h3 th:text="'Количество:'"></h3>
+
+    <input type="text" th:field="*{quantity}" name="quantity" placeholder="Кол-во товара">
+    <div th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" style="color: red"></div><br>
+    <h3 th:text="'Товар:'"></h3>
+
+    <select  name="weapon">
+        <div th:each="element : ${weaponList}">
+            <option th:value = "${element.id}" th:text="${element.name}"></option>
+        </div>
+    </select><br>
+    <h3 th:text="'Склад:'"></h3>
+
+    <select  name="warehouse">
+        <div th:each="element : ${warehouseList}">
+            <option th:value = "${element.id}" th:text="${element.address}"></option>
+        </div>
+    </select><br>
+
+    <input type="submit"  value="Указать количество" class="btn btn-success"><br>
+
+
+</form>
+<a th:href="'/storekeeperdir/'" class="btn btn-dark">Выйти</a>
+
+</body>
+</html>

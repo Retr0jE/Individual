@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Редактирование ' + ${weapons.name}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="fragments/headersell :: headerMain"></div>
+
+<form th:object="${weapons}" method="post">
+
+    <input type="hidden" th:field="*{name}" name="name" placeholder="Имя">
+    <h3 th:text="'Цена:'"></h3>
+
+    <input type="text" th:field="*{price}" name="price">
+
+
+<!--    <select  name="roles[]">-->
+<!--        <div th:each="role : ${roleList}">-->
+<!--            <option th:value="${role}" th:text="${role}"></option>-->
+<!--        </div>-->
+<!--    </select><br>-->
+
+    <input type="submit"  value="Изменить цену" class="btn btn-success"><br>
+
+
+</form>
+<a th:href="'/sellerdir/detail/' + ${weapons.id}" class="btn btn-dark">Выйти</a>
+
+</body>
+</html>
